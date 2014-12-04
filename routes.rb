@@ -1,7 +1,7 @@
 require 'sinatra'
 
-def username_for(firstname, lastname)
-	firstname[0] + lastname[0,5]
+def username_for(firstname, lastname, middlename='')
+	firstname[0] + (middlename[0]||='') + lastname[0,5]
 end
 
 get '/' do
@@ -26,7 +26,7 @@ get '/:lastname/:firstname/:middlename' do
     firstname = params[:firstname]
     lastname = params[:lastname]
     middlename = params[:middlename]
-    username = username_for(firstname, middlename, lastname)
-    "#{firstname} #{lastname}'s username is #{username}"
+    username = username_for(firstname, middlename, lastname).downcase
+    "#{firstname} #{middlename} #{lastname}'s username is #{username}"
 	"Alfonso D Rush's username is adrush"
 end
