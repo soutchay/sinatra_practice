@@ -11,3 +11,6 @@ post '/cart' do
 	erb :cart
 end
 
+get '/:lastname/:firstname' do
+	"Alfonso Rush's username is arush"
+end
